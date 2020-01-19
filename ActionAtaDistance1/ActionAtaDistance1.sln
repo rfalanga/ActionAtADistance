@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionAtaDistance1", "ActionAtaDistance1\ActionAtaDistance1.csproj", "{8279125C-3526-4639-9C3E-4422E6BCFBD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8279125C-3526-4639-9C3E-4422E6BCFBD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8279125C-3526-4639-9C3E-4422E6BCFBD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8279125C-3526-4639-9C3E-4422E6BCFBD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8279125C-3526-4639-9C3E-4422E6BCFBD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {237200EC-6EB3-43F6-B9FA-94AB552DAFE4}
+	EndGlobalSection
+EndGlobal
