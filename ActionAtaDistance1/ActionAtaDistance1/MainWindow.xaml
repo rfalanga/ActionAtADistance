@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="Action At A Distance 1" Height="450" Width="800">
     <Grid>
-        
+        <TextBlock HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   TextWrapping="Wrap"
+                   Text="This illustrates how Action at a Distance can occur"
+                   FontSize="20" />
     </Grid>
 </Window>
