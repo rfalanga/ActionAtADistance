@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ActionAtaDistance1.Model;
+using System.IO;
 
 namespace ActionAtaDistance1.Logging
 {
     public class CoreEventLog
     {
         public static bool EnableLogging = false;
+        public static string IP_Address { get; set; }
+        public static StreamWriter log_file = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\CoreEvent.log", true);
 
         public static void LogEvent(string Action, string Table_name, long? Record_id, string Message, bool Error)
         {
@@ -35,6 +33,58 @@ namespace ActionAtaDistance1.Logging
             };
         }
 
-        public static string IP_Address { get; set; }
+        public static void LogEvent(string Action)
+        {
+            if (EnableLogging == false)
+            {
+                return;
+            }
+            LogEvent(Action, null, null, null, false);
+        }
+
+        public static void LogEvent(string Action, string Message)
+        {
+            if (EnableLogging == false)
+            {
+                return;
+            }
+            LogEvent(Action, null, null, Message);
+        }
+
+        public static void LogEvent(string Action, string Table_name, long? Record_id, string Message)
+        {
+            if (EnableLogging == false)
+            {
+                return;
+            }
+            LogEvent(Action, Table_name, Record_id, Message, false);
+        }
+
+        public static void WriteToLogFile(string Action)
+        {
+            WriteToLogFile(Action, null, null, null, null);
+        }
+
+        public static void WriteToLogFile(string Action, string Table_name, long? Record_id, string Message, bool? Error)
+        {
+            if (EnableLogging == false)
+            {
+                return;
+            }
+
+            log_file.WriteLine();
+            log_file.WriteLine("AppName: {0}", App.Name);
+            log_file.WriteLine("AppVersion: {0}", App.Version);
+            log_file.WriteLine("AppName: {0}", Environment.UserName);
+            log_file.WriteLine("MachineName: {0}", Environment.MachineName);
+            log_file.WriteLine("IP_Address: {0}", IP_Address);
+            log_file.WriteLine("ActionDateTime: {0}", DateTime.Now);
+            log_file.WriteLine("ActionTaken: {0}", Action);
+            if (Table_name != null) log_file.WriteLine("TableName: {0}", Table_name);
+            if (Record_id != null) log_file.WriteLine("RecordID: {0}", Record_id);
+            if (Message != null) log_file.WriteLine("tSQL: {0}", Message);
+            if (Error != null) log_file.WriteLine("ErrorMessage: {0}", Error);
+            log_file.Flush();
+        }
     }
 }
