@@ -9,7 +9,7 @@ namespace ActionAtaDistance1.Logging
 {
     public class CoreEventLog
     {
-        public static bool EnableLogging = true;    //originally set to false
+        public static bool EnableLogging = false;
 
         public static void LogEvent(string Action, string Table_name, long? Record_id, string Message, bool Error)
         {

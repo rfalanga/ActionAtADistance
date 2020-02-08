@@ -1,4 +1,8 @@
-﻿using System.Deployment.Application;
+﻿using System;
+using System.Configuration;
+using System.Deployment.Application;
+using System.Linq;
+using System.Net;
 using System.Windows;
 
 namespace ActionAtaDistance1
@@ -24,6 +28,23 @@ namespace ActionAtaDistance1
                 //// (e.g. during debug)
                 Version = "App not installed.";
             }
+
+            if (ConfigurationManager.AppSettings["EnableLogging"] != null)
+            {
+                if (ConfigurationManager.AppSettings["EnableLogging"].ToLower() == "true")
+                {
+                    Logging.CoreEventLog.EnableLogging = true;
+                    try
+                    {
+                        Logging.CoreEventLog.IP_Address = Dns.GetHostAddresses(Environment.MachineName).FirstOrDefault().ToString();
+                    }
+                    catch (System.Net.Sockets.SocketException ex)
+                    {
+                        Logging.CoreEventLog.LogEvent("Dns.GetHostAddresses", null, null, ex.Message, true);
+                    }
+                }
+            }
+
         }
 
         public static string Name 
