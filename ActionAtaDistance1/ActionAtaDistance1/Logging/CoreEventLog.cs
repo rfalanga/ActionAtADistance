@@ -7,7 +7,12 @@ namespace ActionAtaDistance1.Logging
     {
         public static bool EnableLogging = false;
         public static string IP_Address { get; set; }
+
+        #region Action at a Distance - Part 1
+
         public static StreamWriter log_file = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + @"\CoreEvent.log", true);
+
+        #endregion
 
         public static void LogEvent(string Action, string Table_name, long? Record_id, string Message, bool Error)
         {
