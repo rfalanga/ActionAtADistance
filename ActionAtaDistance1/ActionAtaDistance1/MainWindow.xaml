@@ -33,10 +33,6 @@
                    Grid.ColumnSpan="2"
                    Text="This illustrates how Action at a Distance can occur"
                    FontSize="20" />
-        <!--<Border Grid.Row="1" Style="{StaticResource ButtonBorderStyle}">
-            <Button x:Name="AuthorsButton"
-                Content="Authors" />
-        </Border>-->
         <Button x:Name="AuthorsButton"
                 Grid.Row="1"
                 Content="Authors"
@@ -47,12 +43,6 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <!--<Border Grid.Column="1"
-                Grid.Row="1"
-                Style="{StaticResource ButtonBorderStyle}">
-            <Button x:Name="MysteryBooksButton"
-                Content="Mystery Books" />
-        </Border>-->
         <Button x:Name="MysteryBooksButton"
                 Content="Mystery Books"
                 Grid.Column="1"
