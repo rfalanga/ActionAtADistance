@@ -1,4 +1,7 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
+using System;
+using System.Windows.Input;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -16,6 +19,10 @@ namespace ActionAtaDistance1.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        public ICommand ViewAuthorsCommand { get; private set; }
+        public ICommand ViewMysteryBooksCommand { get; private set; }
+
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -29,6 +36,19 @@ namespace ActionAtaDistance1.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
+
+            ViewAuthorsCommand = new RelayCommand(ExecuteViewAuthorsCommand);
+            ViewMysteryBooksCommand = new RelayCommand(ExecuteViewMysteryBooksCommand);
+        }
+
+        private void ExecuteViewMysteryBooksCommand()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ExecuteViewAuthorsCommand()
+        {
+            throw new NotImplementedException();
         }
     }
 }

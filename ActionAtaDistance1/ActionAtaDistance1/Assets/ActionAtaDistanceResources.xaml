@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:ActionAtaDistance1.ViewModel"
+                    xmlns:view="clr-namespace:ActionAtaDistance1.View"
+                    xmlns:basedir="clr-namespace:ActionAtaDistance1"
+                    xmlns:local="clr-namespace:ActionAtaDistance1.Assets">
+    <!--<DataTemplate DataType="{x:Type vm:MainViewModel}">
+        <basedir:MainWindow />
+    </DataTemplate>-->
+</ResourceDictionary>

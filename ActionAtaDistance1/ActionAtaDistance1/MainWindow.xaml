@@ -36,6 +36,7 @@
         <Button x:Name="AuthorsButton"
                 Grid.Row="1"
                 Content="Authors"
+                Command="{Binding ViewAuthorsCommand}"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -45,6 +46,7 @@
         </Button>
         <Button x:Name="MysteryBooksButton"
                 Content="Mystery Books"
+                Command="{Binding ViewMysteryBooksCommand}"
                 Grid.Column="1"
                 Grid.Row="1">
             <Button.Resources>
