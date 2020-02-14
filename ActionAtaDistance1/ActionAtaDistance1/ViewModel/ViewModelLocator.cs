@@ -52,6 +52,22 @@ namespace ActionAtaDistance1.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
+
+        public AuthorsViewModel AuthorsVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AuthorsViewModel>();
+            }
+        }
+
+        public MysteryBooksViewModel MysteryBooksVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MysteryBooksViewModel>();
+            }
+        }
         
         public static void Cleanup()
         {
