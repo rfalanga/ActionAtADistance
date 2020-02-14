@@ -14,6 +14,7 @@
 
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
+using ActionAtaDistance1.ViewModel;
 //using Microsoft.Practices.ServiceLocation;
 
 namespace ActionAtaDistance1.ViewModel
@@ -43,6 +44,8 @@ namespace ActionAtaDistance1.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<AuthorsViewModel>();
+            SimpleIoc.Default.Register<MysteryBooksViewModel>();
         }
 
         public MainViewModel Main
