@@ -43,12 +43,14 @@ namespace ActionAtaDistance1.ViewModel
 
         private void ExecuteViewMysteryBooksCommand()
         {
-            throw new NotImplementedException();
+            var mystery = new View.MysteryBooks();
+            mystery.Show();
         }
 
         private void ExecuteViewAuthorsCommand()
         {
-            throw new NotImplementedException();
+            var author = new View.Authors();
+            author.Show();
         }
     }
 }
