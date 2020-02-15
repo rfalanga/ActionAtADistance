@@ -12,7 +12,19 @@ namespace ActionAtaDistance1.ViewModel
     {
         public List<Author> Authors { get; set; }
 
-        public Author SelectedAuthor { get; set; }
+        private Author selectedAuthor;
+        public Author SelectedAuthor 
+        { 
+            get { return selectedAuthor; }
+            set
+            {
+                if (selectedAuthor != value)
+                {
+                    selectedAuthor = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
         public AuthorsViewModel()
         {
