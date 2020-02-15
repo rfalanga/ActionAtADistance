@@ -12,6 +12,8 @@ namespace ActionAtaDistance1.ViewModel
     {
         public List<Author> Authors { get; set; }
 
+        public Author SelectedAuthor { get; set; }
+
         public AuthorsViewModel()
         {
             using (var ctx = new AuthorsModel())
