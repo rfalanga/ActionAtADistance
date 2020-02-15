@@ -5,9 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ActionAtaDistance1.View"
         mc:Ignorable="d"
+        FontSize="15"
         DataContext="{Binding Source={StaticResource Locator}, Path=MysteryBooksVM}"
         Title="Mystery Books" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="WrapPanelTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="25" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="MysteryBooksListView"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  SelectedItem="{Binding SelectedMysteryBook}"
+                  ItemsSource="{Binding MysteryBooks}"
+                  Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,3">
+                        <TextBlock Text="{Binding BookTitle}"
+                                   Margin="3,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <WrapPanel Orientation="Horizontal"
+                   Grid.Column="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   DataContext="{Binding SelectedMysteryBook}">
+            <TextBlock Text="{Binding BookTitle}"
+                       FontWeight="Bold"
+                       Style="{StaticResource WrapPanelTextBlockStyle}" />
+            <TextBlock Text="{Binding Author.FirstName}"
+                       Margin="6,0,0,0"
+                       FontStyle="Italic"
+                       Style="{StaticResource WrapPanelTextBlockStyle}" />
+            <TextBlock Text="{Binding Author.MiddleInitial}"
+                       Margin="6,0,0,0"
+                       FontStyle="Italic"
+                       Style="{StaticResource WrapPanelTextBlockStyle}" />
+            <TextBlock Text="{Binding Author.LastName}"
+                       Margin="6,0,0,0"
+                       FontStyle="Italic"
+                       Style="{StaticResource WrapPanelTextBlockStyle}" />
+            <TextBlock Text="{Binding MysteryGenre.Description}"
+                       Margin="6,0,0,0"
+                       Style="{StaticResource WrapPanelTextBlockStyle}" />
+            <DatePicker SelectedDate="{Binding PublishDate}"
+                        FontSize="25"
+                        Margin="6,0,0,0" />
+        </WrapPanel>
     </Grid>
 </Window>

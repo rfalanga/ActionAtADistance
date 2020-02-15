@@ -30,7 +30,7 @@ namespace ActionAtaDistance1.ViewModel
         {
             using (var ctx = new AuthorsModel())
             {
-                MysteryBooks = ctx.MysteryBooks.OrderBy(m => m.BookTitle).ToList();
+                MysteryBooks = ctx.MysteryBooks.Include("Author").Include("MysteryGenre").OrderBy(m => m.BookTitle).ToList();
             }
         }
     }
