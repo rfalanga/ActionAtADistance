@@ -5,9 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ActionAtaDistance1.View"
         mc:Ignorable="d"
+        FontSize="15"
         DataContext="{Binding Source={StaticResource Locator}, Path=AuthorsVM}"
         Title="Authors" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="AuthorsListView"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  ItemsSource="{Binding Authors}"
+                  Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,3">
+                        <TextBlock Text="{Binding FirstName}" />
+                        <TextBlock Text="{Binding LastName}"
+                                   Margin="3,0,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
