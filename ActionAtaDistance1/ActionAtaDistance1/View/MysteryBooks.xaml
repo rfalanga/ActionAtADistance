@@ -34,33 +34,69 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <WrapPanel Orientation="Horizontal"
-                   Grid.Column="1"
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <WrapPanel Orientation="Horizontal"
                    Margin="10"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    DataContext="{Binding SelectedMysteryBook}">
-            <TextBlock Text="{Binding BookTitle}"
+                <TextBlock Text="{Binding BookTitle}"
                        FontWeight="Bold"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
-            <TextBlock Text="{Binding Author.FirstName}"
+                <TextBlock Text="{Binding Author.FirstName}"
                        Margin="6,0,0,0"
                        FontStyle="Italic"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
-            <TextBlock Text="{Binding Author.MiddleInitial}"
+                <TextBlock Text="{Binding Author.MiddleInitial}"
                        Margin="3,0,0,0"
                        FontStyle="Italic"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
-            <TextBlock Text="{Binding Author.LastName}"
+                <TextBlock Text="{Binding Author.LastName}"
                        Margin="3,0,0,0"
                        FontStyle="Italic"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
-            <TextBlock Text="{Binding MysteryGenre.Description}"
+                <TextBlock Text="{Binding MysteryGenre.Description}"
                        Margin="6,0,0,0"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
-            <DatePicker SelectedDate="{Binding PublishDate}"
+                <DatePicker SelectedDate="{Binding PublishDate}"
                         FontSize="25"
                         Margin="6,0,0,0" />
-        </WrapPanel>
+            </WrapPanel>
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="LightBlue" />
+                        <Setter Property="Padding" Value="10" />
+                        <Setter Property="FontSize" Value="15" />
+                        <Setter Property="Margin" Value="10" />
+                    </Style>
+                    <Style TargetType="Border" x:Key="ButtonBorderStyle">
+                        <Setter Property="BorderThickness" Value="0" />
+                    </Style>
+                </StackPanel.Resources>
+                <Button x:Name="SaveButton"
+                        Content="Save">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="CancelButton"
+                        Content="Cancel">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
