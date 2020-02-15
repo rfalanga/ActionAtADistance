@@ -36,6 +36,7 @@
         </ListView>
         <WrapPanel Orientation="Horizontal"
                    Grid.Column="1"
+                   Margin="10"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    DataContext="{Binding SelectedMysteryBook}">
@@ -47,11 +48,11 @@
                        FontStyle="Italic"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
             <TextBlock Text="{Binding Author.MiddleInitial}"
-                       Margin="6,0,0,0"
+                       Margin="3,0,0,0"
                        FontStyle="Italic"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
             <TextBlock Text="{Binding Author.LastName}"
-                       Margin="6,0,0,0"
+                       Margin="3,0,0,0"
                        FontStyle="Italic"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
             <TextBlock Text="{Binding MysteryGenre.Description}"
