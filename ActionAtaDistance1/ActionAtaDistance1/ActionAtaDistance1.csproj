@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\IntToVisibility.cs" />
     <Compile Include="Converters\HandleNullEmptyString.cs" />
     <Compile Include="ViewModel\AuthorsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

@@ -26,6 +26,20 @@ namespace ActionAtaDistance1.ViewModel
             }
         }
 
+        private bool showDate;
+        public bool ShowDate 
+        { 
+            get { return showDate; }
+            set
+            {
+                if (showDate != value)
+                {
+                    showDate = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         public AuthorsViewModel()
         {
             using (var ctx = new AuthorsModel())
