@@ -37,22 +37,59 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <WrapPanel Orientation="Horizontal"
-                   Grid.Column="1"
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <WrapPanel Orientation="Horizontal"
                    DataContext="{Binding SelectedAuthor}"
+                   Margin="10"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center">
-            <TextBlock Text="{Binding FirstName}" Style="{StaticResource WrapPanelTextBlockStyle}" />
-            <TextBlock Text="{Binding MiddleInitial}" 
+                <TextBlock Text="{Binding FirstName}" Style="{StaticResource WrapPanelTextBlockStyle}" />
+                <TextBlock Text="{Binding MiddleInitial}" 
                        Margin="3,0,0,0"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
-            <TextBlock Text="{Binding LastName}"
+                <TextBlock Text="{Binding LastName}"
                        Margin="3,0,0,0"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
-            <DatePicker SelectedDate="{Binding DateOfBirth}"
+                <DatePicker SelectedDate="{Binding DateOfBirth}"
                         FontSize="25"
                         Visibility="{Binding ID, Converter={StaticResource IntVisConverter}}"
                         Margin="6,0,0,0" />
-        </WrapPanel>
+            </WrapPanel>
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="LightBlue" />
+                        <Setter Property="Padding" Value="10" />
+                        <Setter Property="FontSize" Value="15" />
+                        <Setter Property="Margin" Value="10" />
+                    </Style>
+                    <Style TargetType="Border" x:Key="ButtonBorderStyle">
+                        <Setter Property="BorderThickness" Value="0" />
+                    </Style>
+                </StackPanel.Resources>
+                <Button x:Name="SaveButton"
+                        Content="Save">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="CancelButton"
+                        Content="Cancel">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
