@@ -75,6 +75,7 @@
                     </Style>
                 </StackPanel.Resources>
                 <Button x:Name="SaveButton"
+                        Command="{Binding SaveCommand}"
                         Content="Save">
                     <Button.Resources>
                         <Style TargetType="Border">

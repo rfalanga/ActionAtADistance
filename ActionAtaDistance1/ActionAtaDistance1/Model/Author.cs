@@ -1,5 +1,6 @@
 namespace ActionAtaDistance1.Model
 {
+    using GalaSoft.MvvmLight;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ namespace ActionAtaDistance1.Model
     using System.Data.Entity.Spatial;
 
     [Table("Author")]
-    public partial class Author
+    public partial class Author : ViewModelBase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Author()
@@ -28,7 +29,19 @@ namespace ActionAtaDistance1.Model
         [StringLength(100)]
         public string LastName { get; set; }
 
-        public DateTime? DateOfBirth { get; set; }
+        private DateTime? dateOfBirth;
+        public DateTime? DateOfBirth 
+        { 
+            get { return dateOfBirth; }
+            set
+            {
+                if (dateOfBirth != value)
+                {
+                    dateOfBirth = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MysteryBook> MysteryBooks { get; set; }

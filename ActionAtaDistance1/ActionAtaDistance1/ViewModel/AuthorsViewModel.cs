@@ -20,6 +20,7 @@ namespace ActionAtaDistance1.ViewModel
             get { return selectedAuthor; }
             set
             {
+                bool wasSelectedAuthorNull = (selectedAuthor == null);
                 if (selectedAuthor != value)
                 {
                     selectedAuthor = value;
@@ -54,7 +55,18 @@ namespace ActionAtaDistance1.ViewModel
 
         private bool CanExecuteSaveCommand()
         {
-            throw new NotImplementedException();
+            //TODO: This works, sorta. Continue testing.
+            if (SelectedAuthor == null)
+            {
+                return false;
+            }
+
+            if (SelectedAuthor.DateOfBirth == null)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private void ExecuteSaveCommand()
