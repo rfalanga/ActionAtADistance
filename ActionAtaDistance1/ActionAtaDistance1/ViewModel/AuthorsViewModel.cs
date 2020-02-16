@@ -82,7 +82,24 @@ namespace ActionAtaDistance1.ViewModel
 
         private void ExecuteSaveCommand()
         {
-            throw new NotImplementedException();
+            if (! SelectedAuthor.DateOfBirth.HasValue)
+            {
+                return;
+            }
+
+            //retrieve relevant data
+            int selectedAuthorID = SelectedAuthor.ID;
+            DateTime newDateOfBirth = SelectedAuthor.DateOfBirth.Value;
+
+            using (var ctx = new AuthorsModel())
+            {
+                var rec = ctx.Authors.Where(a => a.ID == selectedAuthorID).FirstOrDefault();
+                if (rec != null)
+                {
+                    rec.DateOfBirth = newDateOfBirth;
+                    ctx.SaveChanges();
+                }
+            }
         }
     }
 }
