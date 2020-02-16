@@ -14,6 +14,8 @@ namespace ActionAtaDistance1.ViewModel
 
         public ICommand SaveCommand { get; private set; }
 
+        private int previousID;
+
         private Author selectedAuthor;
         public Author SelectedAuthor 
         { 
@@ -50,14 +52,23 @@ namespace ActionAtaDistance1.ViewModel
                 Authors = ctx.Authors.OrderBy(a => a.LastName).ToList();
             }
 
-            SaveCommand = new RelayCommand(ExecuteSaveCommand, CanExecuteSaveCommand);
+            previousID = 0;
+
+            //SaveCommand = new RelayCommand(ExecuteSaveCommand, CanExecuteSaveCommand);
+            SaveCommand = new RelayCommand(ExecuteSaveCommand);
         }
 
         private bool CanExecuteSaveCommand()
         {
-            //TODO: This works, sorta. Continue testing.
             if (SelectedAuthor == null)
             {
+                return false;
+            }
+
+            if (SelectedAuthor.ID != previousID)
+            {
+                //the selected author has changed
+                previousID = SelectedAuthor.ID;
                 return false;
             }
 
