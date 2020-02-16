@@ -91,15 +91,13 @@ namespace ActionAtaDistance1.ViewModel
             int selectedAuthorID = SelectedAuthor.ID;
             DateTime newDateOfBirth = SelectedAuthor.DateOfBirth.Value;
 
-            using (var ctx = new AuthorsModel())
+            var rec = App.MainDataContext.Authors.Where(a => a.ID == selectedAuthorID).FirstOrDefault();
+            if (rec != null)
             {
-                var rec = ctx.Authors.Where(a => a.ID == selectedAuthorID).FirstOrDefault();
-                if (rec != null)
-                {
-                    rec.DateOfBirth = newDateOfBirth;
-                    ctx.SaveChanges();
-                }
+                rec.DateOfBirth = newDateOfBirth;
+                App.MainDataContext.SaveChanges();
             }
+
         }
     }
 }

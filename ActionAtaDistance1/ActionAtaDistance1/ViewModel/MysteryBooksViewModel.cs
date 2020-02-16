@@ -53,14 +53,11 @@ namespace ActionAtaDistance1.ViewModel
             int selectedMysteryBookID = SelectedMysteryBook.ID;
             DateTime newPublishDate = SelectedMysteryBook.PublishDate.Value;
 
-            using (var ctx = new AuthorsModel())
+            var rec = App.MainDataContext.MysteryBooks.Where(mb => mb.ID == selectedMysteryBookID).FirstOrDefault();
+            if (rec != null)
             {
-                var rec = ctx.MysteryBooks.Where(mb => mb.ID == selectedMysteryBookID).FirstOrDefault();
-                if (rec != null)
-                {
-                    rec.PublishDate = newPublishDate;
-                    ctx.SaveChanges();
-                }
+                rec.PublishDate = newPublishDate;
+                App.MainDataContext.SaveChanges();
             }
         }
     }
