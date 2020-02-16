@@ -1,13 +1,18 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using ActionAtaDistance1.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
+using System;
 
 namespace ActionAtaDistance1.ViewModel
 {
     public class AuthorsViewModel : ViewModelBase
     {
         public List<Author> Authors { get; set; }
+
+        public ICommand SaveCommand { get; private set; }
 
         private Author selectedAuthor;
         public Author SelectedAuthor 
@@ -43,6 +48,9 @@ namespace ActionAtaDistance1.ViewModel
             {
                 Authors = ctx.Authors.OrderBy(a => a.LastName).ToList();
             }
+
+            //SaveCommand = RelayCommand(ExecuteSaveCommand, CanExecuteSaveCommand);
         }
+
     }
 }
