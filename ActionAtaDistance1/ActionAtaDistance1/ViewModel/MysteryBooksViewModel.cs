@@ -14,7 +14,7 @@ namespace ActionAtaDistance1.ViewModel
 
         public ICommand SaveCommand { get; private set; }
 
-        private int previousID;
+        //private int previousID;
 
         private MysteryBook selectedMysteryBook;
         public MysteryBook SelectedMysteryBook 
@@ -37,7 +37,7 @@ namespace ActionAtaDistance1.ViewModel
                 MysteryBooks = ctx.MysteryBooks.Include("Author").Include("MysteryGenre").OrderBy(m => m.BookTitle).ToList();
             }
 
-            previousID = 0;
+            //previousID = 0;
 
             SaveCommand = new RelayCommand(ExecuteSaveCommand);
         }
