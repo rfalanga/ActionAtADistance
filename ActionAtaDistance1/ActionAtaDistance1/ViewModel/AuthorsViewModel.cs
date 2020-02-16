@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.CommandWpf;
 using ActionAtaDistance1.Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,8 +49,17 @@ namespace ActionAtaDistance1.ViewModel
                 Authors = ctx.Authors.OrderBy(a => a.LastName).ToList();
             }
 
-            //SaveCommand = RelayCommand(ExecuteSaveCommand, CanExecuteSaveCommand);
+            SaveCommand = new RelayCommand(ExecuteSaveCommand, CanExecuteSaveCommand);
         }
 
+        private bool CanExecuteSaveCommand()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ExecuteSaveCommand()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
