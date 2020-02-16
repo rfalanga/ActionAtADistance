@@ -83,7 +83,8 @@
                     </Button.Resources>
                 </Button>
                 <Button x:Name="CancelButton"
-                        Content="Cancel">
+                        
+                        Content="Cancel" Click="CancelButton_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="20" />
