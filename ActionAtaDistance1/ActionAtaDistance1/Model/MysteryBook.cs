@@ -1,3 +1,4 @@
+using GalaSoft.MvvmLight;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -5,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ActionAtaDistance1.Model
 {
     [Table("MysteryBook")]
-    public partial class MysteryBook
+    public partial class MysteryBook : ViewModelBase
     {
         public int ID { get; set; }
 
@@ -15,7 +16,19 @@ namespace ActionAtaDistance1.Model
         [StringLength(200)]
         public string BookTitle { get; set; }
 
-        public DateTime? PublishDate { get; set; }
+        private DateTime? publishDate;
+        public DateTime? PublishDate 
+        { 
+            get { return publishDate; }
+            set
+            {
+                if (publishDate != value)
+                {
+                    publishDate = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
         public int MysteryGenreID { get; set; }
 
