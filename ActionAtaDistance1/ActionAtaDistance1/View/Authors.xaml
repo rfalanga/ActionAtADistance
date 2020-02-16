@@ -55,9 +55,10 @@
                        Margin="3,0,0,0"
                        Style="{StaticResource WrapPanelTextBlockStyle}" />
                 <DatePicker SelectedDate="{Binding DateOfBirth}"
-                        FontSize="25"
-                        Visibility="{Binding ID, Converter={StaticResource IntVisConverter}}"
-                        Margin="6,0,0,0" />
+                            FontSize="25"
+                            ToolTip="Author's Date of Birth"
+                            Visibility="{Binding ID, Converter={StaticResource IntVisConverter}}"
+                            Margin="6,0,0,0" />
             </WrapPanel>
             <StackPanel Grid.Row="1"
                         Orientation="Horizontal"
