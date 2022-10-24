@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Input;
 using System;
 using ActionAtaDistance1.Common;
+using System.Data.Entity;
 
 namespace ActionAtaDistance1.ViewModel
 {
