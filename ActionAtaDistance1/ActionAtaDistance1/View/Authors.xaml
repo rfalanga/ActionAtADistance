@@ -95,7 +95,7 @@
                     </Button.Resources>
                 </Button>
                 <Button x:Name="CancelButton"
-                        
+                        Command="{Binding CancelCommand}"
                         Content="Cancel" Click="CancelButton_Click">
                     <Button.Resources>
                         <Style TargetType="Border">

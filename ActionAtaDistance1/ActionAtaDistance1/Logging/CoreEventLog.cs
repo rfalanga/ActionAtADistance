@@ -5,7 +5,7 @@ namespace ActionAtaDistance1.Logging
 {
     public class CoreEventLog
     {
-        public static bool EnableLogging = false;
+        public static bool EnableLogging = false;    
         public static string IP_Address { get; set; }
 
         #region LogEvent to database - not used in this demo

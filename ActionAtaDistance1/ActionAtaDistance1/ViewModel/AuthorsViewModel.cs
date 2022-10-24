@@ -14,6 +14,7 @@ namespace ActionAtaDistance1.ViewModel
         public List<Author> Authors { get; set; }
 
         public ICommand SaveCommand { get; private set; }
+        public ICommand CancelCommand { get; private set; }
 
         private int previousID;
 
@@ -79,6 +80,7 @@ namespace ActionAtaDistance1.ViewModel
 
             //SaveCommand = new RelayCommand(ExecuteSaveCommand, CanExecuteSaveCommand);
             SaveCommand = new RelayCommand(ExecuteSaveCommand);
+            CancelCommand = new RelayCommand(ExecuteCancelCommand);
         }
 
         private bool CanExecuteSaveCommand()
@@ -114,14 +116,34 @@ namespace ActionAtaDistance1.ViewModel
             int selectedAuthorID = SelectedAuthor.ID;
             DateTime newDateOfBirth = SelectedAuthor.DateOfBirth.Value;
 
-            using (var ctx = new AuthorsModel())
+            var rec = App.MainDataContext.Authors.Where(a => a.ID == selectedAuthorID).FirstOrDefault();
+            if (rec != null)
             {
-                var rec = ctx.Authors.Where(a => a.ID == selectedAuthorID).FirstOrDefault();
-                if (rec != null)
-                {
-                    rec.DateOfBirth = newDateOfBirth;
-                    ctx.SaveChanges();
-                }
+                rec.DateOfBirth = newDateOfBirth;
+                App.MainDataContext.SaveChanges();
+            }
+
+        }
+
+        private void ExecuteCancelCommand()
+        {
+            var changedEntities = App.MainDataContext.ChangeTracker.Entries()
+                .Where(x => x.State != EntityState.Unchanged).ToList();
+
+            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Modified))
+            {
+                entry.CurrentValues.SetValues(entry.OriginalValues);
+                entry.State = EntityState.Unchanged;
+            }
+
+            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Added))
+            {
+                entry.State = EntityState.Detached;
+            }
+
+            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Deleted))
+            {
+                entry.State = EntityState.Unchanged;
             }
         }
     }

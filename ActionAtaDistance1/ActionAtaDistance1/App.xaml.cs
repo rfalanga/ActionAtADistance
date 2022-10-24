@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ActionAtaDistance1.Model;
+using System;
 using System.Configuration;
 using System.Deployment.Application;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace ActionAtaDistance1
     {
         private static string _Name;
 
+        private static AuthorsModel authorsModel;
+
         public App()
         {
             _Name = "ActionAtaDistance1";
@@ -28,6 +31,8 @@ namespace ActionAtaDistance1
                 //// (e.g. during debug)
                 Version = "App not installed.";
             }
+
+            authorsModel = new AuthorsModel();
 
             if (ConfigurationManager.AppSettings["EnableLogging"] != null)
             {
@@ -45,6 +50,12 @@ namespace ActionAtaDistance1
                 }
             }
 
+        }
+
+        public static AuthorsModel MainDataContext 
+        { 
+            get { return authorsModel; }
+            set { authorsModel = value; }
         }
 
         public static string Name 
