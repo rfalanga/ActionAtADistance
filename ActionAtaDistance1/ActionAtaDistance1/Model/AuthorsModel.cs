@@ -1,9 +1,7 @@
+using System.Data.Entity;
+
 namespace ActionAtaDistance1.Model
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public partial class AuthorsModel : DbContext
     {

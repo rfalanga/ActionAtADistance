@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using ActionAtaDistance1.Common;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -30,11 +31,33 @@ namespace ActionAtaDistance1.ViewModel
             }
         }
 
+        private string errorTextBlock;
+        public String ErrorTextBlock
+        {
+            get { return errorTextBlock; }
+            set
+            {
+                if (errorTextBlock != value)
+                {
+                    errorTextBlock = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         public MysteryBooksViewModel()
         {
-            using (var ctx = new AuthorsModel())
+            try
             {
-                MysteryBooks = ctx.MysteryBooks.Include("Author").Include("MysteryGenre").OrderBy(m => m.BookTitle).ToList();
+                using (var ctx = new AuthorsModel())
+                {
+                    MysteryBooks = ctx.MysteryBooks.Include("Author").Include("MysteryGenre").OrderBy(m => m.BookTitle).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                var errMessage = ErrorMessage.ReturnErrorMessage(ex, "");
+                ErrorTextBlock = errMessage;
             }
 
             //previousID = 0;

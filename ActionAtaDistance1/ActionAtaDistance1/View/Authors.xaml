@@ -42,11 +42,16 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
             <WrapPanel Orientation="Horizontal"
-                   DataContext="{Binding SelectedAuthor}"
-                   Margin="10"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center">
+                       DataContext="{Binding SelectedAuthor}"
+                       Margin="10"
+                       Grid.ColumnSpan="2"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
                 <TextBlock Text="{Binding FirstName}" Style="{StaticResource WrapPanelTextBlockStyle}" />
                 <TextBlock Text="{Binding MiddleInitial}" 
                        Margin="3,0,0,0"
@@ -60,7 +65,13 @@
                             Visibility="{Binding ID, Converter={StaticResource IntVisConverter}}"
                             Margin="6,0,0,0" />
             </WrapPanel>
+            <TextBlock Text="{Binding ErrorTextBlock}"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       TextWrapping="WrapWithOverflow"
+                       Foreground="Red" />
             <StackPanel Grid.Row="1"
+                        Grid.Column="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right">
                 <StackPanel.Resources>
