@@ -8,9 +8,6 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System.Security" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
     <PackageReference Include="EntityFramework" Version="6.4.0" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
