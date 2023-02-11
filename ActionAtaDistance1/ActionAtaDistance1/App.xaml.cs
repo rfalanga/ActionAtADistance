@@ -1,7 +1,7 @@
 ﻿using ActionAtaDistance1.Model;
 using System;
 using System.Configuration;
-using System.Deployment.Application;
+//using System.Deployment.Application;  //Not sure this is needed; and might not have the assembly included
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -21,16 +21,18 @@ namespace ActionAtaDistance1
         {
             _Name = "ActionAtaDistance1";
 
-            try
-            {
-                Version = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
-            }
-            catch (InvalidDeploymentException)
-            {
-                //// you cannot read publish version when app isn't installed 
-                //// (e.g. during debug)
-                Version = "App not installed.";
-            }
+            // Note: not deploying this app anyway; it is used for demo purposes only
+
+            //try
+            //{
+            //    Version = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
+            //}
+            //catch (InvalidDeploymentException)
+            //{
+            //    //// you cannot read publish version when app isn't installed 
+            //    //// (e.g. during debug)
+            //    Version = "App not installed.";
+            //}
 
             authorsModel = new AuthorsModel();
 
