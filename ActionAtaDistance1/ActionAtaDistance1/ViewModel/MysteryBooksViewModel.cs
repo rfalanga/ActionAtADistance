@@ -2,7 +2,6 @@
 using GalaSoft.MvvmLight.CommandWpf;
 using ActionAtaDistance1.Model;
 using System;
-using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
@@ -89,24 +88,26 @@ namespace ActionAtaDistance1.ViewModel
 
         private void ExecuteCancelCommand()
         {
-            var changedEntities = App.MainDataContext.ChangeTracker.Entries()
-                .Where(x => x.State != EntityState.Unchanged).ToList();
+            //TODO: Commenting out this code for now, may remove this routine entirely.
 
-            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Modified))
-            {
-                entry.CurrentValues.SetValues(entry.OriginalValues);
-                entry.State = EntityState.Unchanged;
-            }
+            //var changedEntities = App.MainDataContext.ChangeTracker.Entries()
+            //    .Where(x => x.State != EntityState.Unchanged).ToList();
 
-            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Added))
-            {
-                entry.State = EntityState.Detached;
-            }
+            //foreach (var entry in changedEntities.Where(x => x.State == EntityState.Modified))
+            //{
+            //    entry.CurrentValues.SetValues(entry.OriginalValues);
+            //    entry.State = EntityState.Unchanged;
+            //}
 
-            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Deleted))
-            {
-                entry.State = EntityState.Unchanged;
-            }
+            //foreach (var entry in changedEntities.Where(x => x.State == EntityState.Added))
+            //{
+            //    entry.State = EntityState.Detached;
+            //}
+
+            //foreach (var entry in changedEntities.Where(x => x.State == EntityState.Deleted))
+            //{
+            //    entry.State = EntityState.Unchanged;
+            //}
         }
     }
 }
