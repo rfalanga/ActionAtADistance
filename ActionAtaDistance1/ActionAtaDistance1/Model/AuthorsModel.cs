@@ -1,4 +1,4 @@
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ActionAtaDistance1.Model
 {
