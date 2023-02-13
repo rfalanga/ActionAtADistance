@@ -1,4 +1,5 @@
 ﻿using ActionAtaDistance1.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Configuration;
 //using System.Deployment.Application;  //Not sure this is needed; and might not have the assembly included
@@ -34,7 +35,8 @@ namespace ActionAtaDistance1
             //    Version = "App not installed.";
             //}
 
-            authorsModel = new AuthorsModel();
+            // TODO: in order to illustrate a global dependence upon Action at a Distance, might want to create a static class, with a AuthorModel in it
+            authorsModel = new AuthorsModel(new DbContextOptions<AuthorsModel>());
 
             if (ConfigurationManager.AppSettings["EnableLogging"] != null)
             {

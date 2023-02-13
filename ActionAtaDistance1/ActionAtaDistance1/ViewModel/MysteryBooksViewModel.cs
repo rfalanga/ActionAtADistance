@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using ActionAtaDistance1.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -50,7 +51,8 @@ namespace ActionAtaDistance1.ViewModel
         {
             try
             {
-                using (var ctx = new AuthorsModel())
+                // TODO: in order to illustrate a global dependence upon Action at a Distance, might want to create a static class, with a AuthorModel in it
+                using (var ctx = new AuthorsModel(new DbContextOptions<AuthorsModel>()))
                 {
                     MysteryBooks = ctx.MysteryBooks.Include("Author").Include("MysteryGenre").OrderBy(m => m.BookTitle).ToList();
                 }
