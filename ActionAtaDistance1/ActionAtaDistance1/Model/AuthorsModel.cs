@@ -22,7 +22,9 @@ namespace ActionAtaDistance1.Model
             //.WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MysteryGenre>()
-                .HasMany(e => e.MysteryBooks);
+                .HasMany(e => e.MysteryBooks)
+                .WithOne(a => a.MysteryGenre)
+                .HasForeignKey(a => a.MysteryGenreID);
                 //.WithRequired(e => e.MysteryGenre)
                 //.WillCascadeOnDelete(false);
         }
