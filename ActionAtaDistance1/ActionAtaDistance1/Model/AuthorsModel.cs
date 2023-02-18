@@ -17,7 +17,9 @@ namespace ActionAtaDistance1.Model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Author>()
-                .HasMany(e => e.MysteryBooks);
+                .HasMany(e => e.MysteryBooks)
+                .WithOne(a => a.Author)
+                .HasForeignKey(a => a.AuthorID);
             //.WithRequired(e => e.Author)
             //.WillCascadeOnDelete(false);
 
@@ -25,8 +27,8 @@ namespace ActionAtaDistance1.Model
                 .HasMany(e => e.MysteryBooks)
                 .WithOne(a => a.MysteryGenre)
                 .HasForeignKey(a => a.MysteryGenreID);
-                //.WithRequired(e => e.MysteryGenre)
-                //.WillCascadeOnDelete(false);
+            //.WithRequired(e => e.MysteryGenre)
+            //.WillCascadeOnDelete(false);
         }
     }
 }
