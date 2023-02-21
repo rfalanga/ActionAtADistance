@@ -41,7 +41,7 @@ namespace ActionAtaDistance1.ViewModel
             ViewAuthorsCommand = new RelayCommand(ExecuteViewAuthorsCommand);
             ViewMysteryBooksCommand = new RelayCommand(ExecuteViewMysteryBooksCommand);
 
-            //TODO: Research what has to be done here to creete the global DbContext of the
+            //TODO: Research what has to be done here to create the global DbContext of the
             // in-memory database.
         }
 

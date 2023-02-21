@@ -29,6 +29,8 @@ namespace ActionAtaDistance1.Model
                 .HasForeignKey(a => a.MysteryGenreID);
             //.WithRequired(e => e.MysteryGenre)
             //.WillCascadeOnDelete(false);
+
+            modelBuilder.Seed();
         }
     }
 }
