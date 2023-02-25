@@ -67,10 +67,12 @@ namespace ActionAtaDistance1.ViewModel
             try
             {
                 // TODO: in order to illustrate a global dependence upon Action at a Distance, might want to create a static class, with a AuthorModel in it
-                using (var ctx = new AuthorsModel(new DbContextOptions<AuthorsModel>()))
-                {
-                    Authors = ctx.Authors.OrderBy(a => a.LastName).ToList();
-                }
+                //using (var ctx = new AuthorsModel(new DbContextOptions<AuthorsModel>()))
+                //{
+                //    Authors = ctx.Authors.OrderBy(a => a.LastName).ToList();
+                //}
+
+                Authors = App.MainDataContext.Authors.OrderBy(a => a.LastName).ToList();
             }
             catch (Exception ex)
             {

@@ -36,7 +36,14 @@ namespace ActionAtaDistance1
             //}
 
             // TODO: in order to illustrate a global dependence upon Action at a Distance, might want to create a static class, with a AuthorModel in it
-            authorsModel = new AuthorsModel(new DbContextOptions<AuthorsModel>());
+            //authorsModel = new AuthorsModel(new DbContextOptions<AuthorsModel>());
+
+            // This is simulates what was done at work, just so we could be a global data context. NOT what should be done!
+            var optionsbuilder = new DbContextOptionsBuilder<AuthorsModel>();
+            optionsbuilder.UseInMemoryDatabase("DefaultDatabase");
+            MainDataContext = new AuthorsModel(optionsbuilder.Options);
+
+            //MainDataContext = new ApplicationDbContext(new DbContextOptions<ApplicationDbContext>());
 
             if (ConfigurationManager.AppSettings["EnableLogging"] != null)
             {
