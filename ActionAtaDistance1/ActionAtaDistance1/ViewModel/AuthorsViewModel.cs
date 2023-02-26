@@ -72,6 +72,9 @@ namespace ActionAtaDistance1.ViewModel
                 //    Authors = ctx.Authors.OrderBy(a => a.LastName).ToList();
                 //}
 
+                App.MainDataContext.Database.EnsureCreated();   //this makes sure that the Seed() method in AuthorsModel is run, if it hasn't been already.
+
+                //This is using the global MainDataContext - i.e.: Action at a Distance anti-pattern
                 Authors = App.MainDataContext.Authors.OrderBy(a => a.LastName).ToList();
             }
             catch (Exception ex)

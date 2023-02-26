@@ -52,10 +52,15 @@ namespace ActionAtaDistance1.ViewModel
             try
             {
                 // TODO: in order to illustrate a global dependence upon Action at a Distance, might want to create a static class, with a AuthorModel in it
-                using (var ctx = new AuthorsModel(new DbContextOptions<AuthorsModel>()))
-                {
-                    MysteryBooks = ctx.MysteryBooks.Include("Author").Include("MysteryGenre").OrderBy(m => m.BookTitle).ToList();
-                }
+                //using (var ctx = new AuthorsModel(new DbContextOptions<AuthorsModel>()))
+                //{
+                //    MysteryBooks = ctx.MysteryBooks.Include("Author").Include("MysteryGenre").OrderBy(m => m.BookTitle).ToList();
+                //}
+
+                App.MainDataContext.Database.EnsureCreated();   //this makes sure that the Seed() method in AuthorsModel is run, if it hasn't been already.
+
+                //This is using the global MainDataContext - i.e.: Action at a Distance anti-pattern
+                MysteryBooks = App.MainDataContext.MysteryBooks.OrderBy(m => m.BookTitle).ToList();
             }
             catch (Exception ex)
             {
