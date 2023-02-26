@@ -6,3 +6,6 @@ I've written a blog post discussing this code and the action at a distance anti-
 
 ## .NET Framework used
 This is written using .NET Framework 4.7.2. I believe I wrote it using that framework because of the MVVM Light framework we used at work, which hasn't been upgraded in several years.
+
+## Upgraded the project to .NET 7
+Recently I updated the project to .NET 7.
