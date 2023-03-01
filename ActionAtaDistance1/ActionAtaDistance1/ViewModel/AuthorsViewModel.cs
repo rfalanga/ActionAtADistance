@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows.Input;
 using System;
 using ActionAtaDistance1.Common;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -66,10 +66,16 @@ namespace ActionAtaDistance1.ViewModel
         {
             try
             {
-                using (var ctx = new AuthorsModel())
-                {
-                    Authors = ctx.Authors.OrderBy(a => a.LastName).ToList();
-                }
+                // TODO: in order to illustrate a global dependence upon Action at a Distance, might want to create a static class, with a AuthorModel in it
+                //using (var ctx = new AuthorsModel(new DbContextOptions<AuthorsModel>()))
+                //{
+                //    Authors = ctx.Authors.OrderBy(a => a.LastName).ToList();
+                //}
+
+                App.MainDataContext.Database.EnsureCreated();   //this makes sure that the Seed() method in AuthorsModel is run, if it hasn't been already.
+
+                //This is using the global MainDataContext - i.e.: Action at a Distance anti-pattern
+                Authors = App.MainDataContext.Authors.OrderBy(a => a.LastName).ToList();
             }
             catch (Exception ex)
             {
@@ -128,24 +134,26 @@ namespace ActionAtaDistance1.ViewModel
 
         private void ExecuteCancelCommand()
         {
-            var changedEntities = App.MainDataContext.ChangeTracker.Entries()
-                .Where(x => x.State != EntityState.Unchanged).ToList();
+            //TODO: Commenting out code, for now. May remove this routine entirely.
 
-            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Modified))
-            {
-                entry.CurrentValues.SetValues(entry.OriginalValues);
-                entry.State = EntityState.Unchanged;
-            }
+            //var changedEntities = App.MainDataContext.ChangeTracker.Entries()
+            //    .Where(x => x.State != EntityState.Unchanged).ToList();
 
-            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Added))
-            {
-                entry.State = EntityState.Detached;
-            }
+            //foreach (var entry in changedEntities.Where(x => x.State == EntityState.Modified))
+            //{
+            //    entry.CurrentValues.SetValues(entry.OriginalValues);
+            //    entry.State = EntityState.Unchanged;
+            //}
 
-            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Deleted))
-            {
-                entry.State = EntityState.Unchanged;
-            }
+            //foreach (var entry in changedEntities.Where(x => x.State == EntityState.Added))
+            //{
+            //    entry.State = EntityState.Detached;
+            //}
+
+            //foreach (var entry in changedEntities.Where(x => x.State == EntityState.Deleted))
+            //{
+            //    entry.State = EntityState.Unchanged;
+            //}
         }
     }
 }

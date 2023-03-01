@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ActionAtaDistance1.Model
 {
@@ -32,8 +33,10 @@ namespace ActionAtaDistance1.Model
 
         public int MysteryGenreID { get; set; }
 
+        [JsonIgnore]
         public virtual Author Author { get; set; }
 
+        [JsonIgnore]
         public virtual MysteryGenre MysteryGenre { get; set; }
     }
 }

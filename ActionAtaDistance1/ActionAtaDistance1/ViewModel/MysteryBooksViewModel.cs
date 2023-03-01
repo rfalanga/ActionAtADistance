@@ -2,11 +2,11 @@
 using GalaSoft.MvvmLight.CommandWpf;
 using ActionAtaDistance1.Model;
 using System;
-using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using ActionAtaDistance1.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -51,10 +51,16 @@ namespace ActionAtaDistance1.ViewModel
         {
             try
             {
-                using (var ctx = new AuthorsModel())
-                {
-                    MysteryBooks = ctx.MysteryBooks.Include("Author").Include("MysteryGenre").OrderBy(m => m.BookTitle).ToList();
-                }
+                // TODO: in order to illustrate a global dependence upon Action at a Distance, might want to create a static class, with a AuthorModel in it
+                //using (var ctx = new AuthorsModel(new DbContextOptions<AuthorsModel>()))
+                //{
+                //    MysteryBooks = ctx.MysteryBooks.Include("Author").Include("MysteryGenre").OrderBy(m => m.BookTitle).ToList();
+                //}
+
+                App.MainDataContext.Database.EnsureCreated();   //this makes sure that the Seed() method in AuthorsModel is run, if it hasn't been already.
+
+                //This is using the global MainDataContext - i.e.: Action at a Distance anti-pattern
+                MysteryBooks = App.MainDataContext.MysteryBooks.OrderBy(m => m.BookTitle).ToList();
             }
             catch (Exception ex)
             {
@@ -89,24 +95,26 @@ namespace ActionAtaDistance1.ViewModel
 
         private void ExecuteCancelCommand()
         {
-            var changedEntities = App.MainDataContext.ChangeTracker.Entries()
-                .Where(x => x.State != EntityState.Unchanged).ToList();
+            //TODO: Commenting out this code for now, may remove this routine entirely.
 
-            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Modified))
-            {
-                entry.CurrentValues.SetValues(entry.OriginalValues);
-                entry.State = EntityState.Unchanged;
-            }
+            //var changedEntities = App.MainDataContext.ChangeTracker.Entries()
+            //    .Where(x => x.State != EntityState.Unchanged).ToList();
 
-            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Added))
-            {
-                entry.State = EntityState.Detached;
-            }
+            //foreach (var entry in changedEntities.Where(x => x.State == EntityState.Modified))
+            //{
+            //    entry.CurrentValues.SetValues(entry.OriginalValues);
+            //    entry.State = EntityState.Unchanged;
+            //}
 
-            foreach (var entry in changedEntities.Where(x => x.State == EntityState.Deleted))
-            {
-                entry.State = EntityState.Unchanged;
-            }
+            //foreach (var entry in changedEntities.Where(x => x.State == EntityState.Added))
+            //{
+            //    entry.State = EntityState.Detached;
+            //}
+
+            //foreach (var entry in changedEntities.Where(x => x.State == EntityState.Deleted))
+            //{
+            //    entry.State = EntityState.Unchanged;
+            //}
         }
     }
 }
