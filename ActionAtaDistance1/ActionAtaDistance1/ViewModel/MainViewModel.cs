@@ -2,7 +2,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using System.Windows.Input;
 using ActionAtaDistance1.Common;
-using ActionAtaDistance1.Model;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -41,11 +40,6 @@ namespace ActionAtaDistance1.ViewModel
 
             ViewAuthorsCommand = new RelayCommand(ExecuteViewAuthorsCommand);
             ViewMysteryBooksCommand = new RelayCommand(ExecuteViewMysteryBooksCommand);
-
-            //TODO: Research what has to be done here to create the global DbContext of the
-            // in-memory database.
-            
-            //mainDbContext = new MainDbContext(new AuthorsModel(); //I don't like this
         }
 
         private void ExecuteViewMysteryBooksCommand()

@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Configuration;
-//using System.Deployment.Application;  //Not sure this is needed; and might not have the assembly included
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -24,26 +23,10 @@ namespace ActionAtaDistance1
 
             // Note: not deploying this app anyway; it is used for demo purposes only
 
-            //try
-            //{
-            //    Version = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
-            //}
-            //catch (InvalidDeploymentException)
-            //{
-            //    //// you cannot read publish version when app isn't installed 
-            //    //// (e.g. during debug)
-            //    Version = "App not installed.";
-            //}
-
-            // TODO: in order to illustrate a global dependence upon Action at a Distance, might want to create a static class, with a AuthorModel in it
-            //authorsModel = new AuthorsModel(new DbContextOptions<AuthorsModel>());
-
-            // This is simulates what was done at work, just so we could be a global data context. NOT what should be done!
+            // This simulates what was done at work, just so we could be a global data context. NOT what should be done!
             var optionsbuilder = new DbContextOptionsBuilder<AuthorsModel>();
             optionsbuilder.UseInMemoryDatabase("DefaultDatabase");
             MainDataContext = new AuthorsModel(optionsbuilder.Options);
-
-            //MainDataContext = new ApplicationDbContext(new DbContextOptions<ApplicationDbContext>());
 
             if (ConfigurationManager.AppSettings["EnableLogging"] != null)
             {

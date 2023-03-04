@@ -20,15 +20,11 @@ namespace ActionAtaDistance1.Model
                 .HasMany(e => e.MysteryBooks)
                 .WithOne(a => a.Author)
                 .HasForeignKey(a => a.AuthorID);
-            //.WithRequired(e => e.Author)
-            //.WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MysteryGenre>()
                 .HasMany(e => e.MysteryBooks)
                 .WithOne(a => a.MysteryGenre)
                 .HasForeignKey(a => a.MysteryGenreID);
-            //.WithRequired(e => e.MysteryGenre)
-            //.WillCascadeOnDelete(false);
 
             modelBuilder.Seed();
         }
