@@ -14,8 +14,6 @@
 
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
-using ActionAtaDistance1.ViewModel;
-//using Microsoft.Practices.ServiceLocation;
 
 namespace ActionAtaDistance1.ViewModel
 {
