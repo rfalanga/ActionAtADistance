@@ -1,4 +1,6 @@
 # ActionAtADistance
+[![.NET Core Desktop](https://github.com/rfalanga/ActionAtADistance/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/rfalanga/ActionAtADistance/actions/workflows/dotnet-desktop.yml)
+
 This repo is to demonstrate what the Action at a Distance anti-pattern can look like. So, please, don't fix the problem. :)
 
 ## A blog post discussing this code and Action at a Distance anti-pattern
