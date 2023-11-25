@@ -1,4 +1,5 @@
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ namespace ActionAtaDistance1.Model
 {
 
     [Table("Author")]
-    public partial class Author : ViewModelBase
+    public partial class Author : ObservableObject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Author()

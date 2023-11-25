@@ -1,4 +1,5 @@
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +8,7 @@ using System.Text.Json.Serialization;
 namespace ActionAtaDistance1.Model
 {
     [Table("MysteryBook")]
-    public partial class MysteryBook : ViewModelBase
+    public partial class MysteryBook : ObservableObject
     {
         public int ID { get; set; }
 

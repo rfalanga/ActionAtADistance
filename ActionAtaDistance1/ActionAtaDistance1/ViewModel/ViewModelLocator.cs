@@ -13,7 +13,7 @@
 */
 
 using CommonServiceLocator;
-using GalaSoft.MvvmLight.Ioc;
+using CommunityToolkit.Mvvm;
 
 namespace ActionAtaDistance1.ViewModel
 {

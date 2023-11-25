@@ -1,5 +1,4 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
+﻿using CommunityToolkit.Mvvm;
 using ActionAtaDistance1.Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +6,11 @@ using System.Windows.Input;
 using System;
 using ActionAtaDistance1.Common;
 using Microsoft.EntityFrameworkCore;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ActionAtaDistance1.ViewModel
 {
-    public class AuthorsViewModel : ViewModelBase
+    public class AuthorsViewModel : ObservableObject
     {
         public List<Author> Authors { get; set; }
 
