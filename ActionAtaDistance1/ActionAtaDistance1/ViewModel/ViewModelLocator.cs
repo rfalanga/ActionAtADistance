@@ -14,6 +14,7 @@
 
 using CommonServiceLocator;
 using CommunityToolkit.Mvvm;
+using CommunityToolkit.Mvvm.DependencyInjection;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -28,7 +29,7 @@ namespace ActionAtaDistance1.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            CommunityToolkit.Mvvm.DependencyInjection.Ioc(() => Ioc.Default);
 
             ////if (ViewModelBase.IsInDesignModeStatic)
             ////{
@@ -41,9 +42,9 @@ namespace ActionAtaDistance1.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<AuthorsViewModel>();
-            SimpleIoc.Default.Register<MysteryBooksViewModel>();
+            Ioc.Default.Register<MainViewModel>();
+            Ioc.Default.Register<AuthorsViewModel>();
+            Ioc.Default.Register<MysteryBooksViewModel>();
         }
 
         public MainViewModel Main

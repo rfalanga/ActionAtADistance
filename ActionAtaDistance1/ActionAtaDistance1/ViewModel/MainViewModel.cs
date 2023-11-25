@@ -1,7 +1,8 @@
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
+using CommunityToolkit.Mvvm;
 using System.Windows.Input;
 using ActionAtaDistance1.Common;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -17,7 +18,7 @@ namespace ActionAtaDistance1.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ObservableObject
     {
         public ICommand ViewAuthorsCommand { get; private set; }
         public ICommand ViewMysteryBooksCommand { get; private set; }
@@ -38,8 +39,8 @@ namespace ActionAtaDistance1.ViewModel
             ////    // Code runs "for real"
             ////}
 
-            ViewAuthorsCommand = new RelayCommand(ExecuteViewAuthorsCommand);
-            ViewMysteryBooksCommand = new RelayCommand(ExecuteViewMysteryBooksCommand);
+            ViewAuthorsCommand = new AsyncRelayCommand(ExecuteViewAuthorsCommand);
+            ViewMysteryBooksCommand = new AsyncRelayCommand(ExecuteViewMysteryBooksCommand);
         }
 
         private void ExecuteViewMysteryBooksCommand()

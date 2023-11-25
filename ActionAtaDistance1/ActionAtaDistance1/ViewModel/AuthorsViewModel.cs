@@ -7,6 +7,7 @@ using System;
 using ActionAtaDistance1.Common;
 using Microsoft.EntityFrameworkCore;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -29,7 +30,7 @@ namespace ActionAtaDistance1.ViewModel
                 if (selectedAuthor != value)
                 {
                     selectedAuthor = value;
-                    RaisePropertyChanged();
+                    OnPropertyChanged();
                 }
             }
         }
@@ -43,7 +44,7 @@ namespace ActionAtaDistance1.ViewModel
                 if (showDate != value)
                 {
                     showDate = value;
-                    RaisePropertyChanged();
+                    OnPropertyChanged();
                 }
             }
         }
@@ -57,7 +58,7 @@ namespace ActionAtaDistance1.ViewModel
                 if (errorTextBlock != value)
                 {
                     errorTextBlock = value;
-                    RaisePropertyChanged();
+                    OnPropertyChanged();
                 }
             }
         }
@@ -79,7 +80,7 @@ namespace ActionAtaDistance1.ViewModel
 
             previousID = 0;
 
-            SaveCommand = new RelayCommand(ExecuteSaveCommand);
+            SaveCommand = new AsyncRelayCommand(ExecuteSaveCommand);
             CancelCommand = new RelayCommand(ExecuteCancelCommand);
         }
 

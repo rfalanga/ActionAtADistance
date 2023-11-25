@@ -27,7 +27,7 @@ namespace ActionAtaDistance1.Model
                 if (publishDate != value)
                 {
                     publishDate = value;
-                    RaisePropertyChanged();
+                    OnPropertyChanged();
                 }
             }
         }

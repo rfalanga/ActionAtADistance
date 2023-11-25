@@ -39,7 +39,7 @@ namespace ActionAtaDistance1.Model
                 if (dateOfBirth != value)
                 {
                     dateOfBirth = value;
-                    RaisePropertyChanged();
+                    OnPropertyChanged();
                 }
             }
         }

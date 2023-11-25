@@ -7,6 +7,7 @@ using System.Windows.Input;
 using ActionAtaDistance1.Common;
 using Microsoft.EntityFrameworkCore;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -28,7 +29,7 @@ namespace ActionAtaDistance1.ViewModel
                 if (selectedMysteryBook != value)
                 {
                     selectedMysteryBook = value;
-                    RaisePropertyChanged();
+                    OnPropertyChanged();
                 }
             }
         }
@@ -42,7 +43,7 @@ namespace ActionAtaDistance1.ViewModel
                 if (errorTextBlock != value)
                 {
                     errorTextBlock = value;
-                    RaisePropertyChanged();
+                    OnPropertyChanged();
                 }
             }
         }
@@ -70,8 +71,8 @@ namespace ActionAtaDistance1.ViewModel
 
             //previousID = 0;
 
-            SaveCommand = new RelayCommand(ExecuteSaveCommand);
-            CancelCommand = new RelayCommand(ExecuteCancelCommand);
+            SaveCommand = new AsyncRelayCommand(ExecuteSaveCommand);
+            CancelCommand = new AsyncRelayCommand(ExecuteCancelCommand);
         }
 
         private void ExecuteSaveCommand()
