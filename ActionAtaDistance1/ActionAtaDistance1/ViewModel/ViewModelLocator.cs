@@ -29,7 +29,7 @@ namespace ActionAtaDistance1.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
-            CommunityToolkit.Mvvm.DependencyInjection.Ioc(() => Ioc.Default);
+            //CommunityToolkit.Mvvm.DependencyInjection.Ioc(() => Ioc.Default); // TODO: I'm not sure if this line is needed, with modifications, or not.
 
             ////if (ViewModelBase.IsInDesignModeStatic)
             ////{
