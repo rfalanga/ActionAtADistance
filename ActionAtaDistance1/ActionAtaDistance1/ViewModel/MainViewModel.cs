@@ -18,7 +18,7 @@ namespace ActionAtaDistance1.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject, IMainViewModel
     {
         public ICommand ViewAuthorsCommand { get; private set; }
         public ICommand ViewMysteryBooksCommand { get; private set; }

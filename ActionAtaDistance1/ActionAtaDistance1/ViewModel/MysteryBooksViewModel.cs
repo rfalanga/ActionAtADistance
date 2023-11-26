@@ -11,7 +11,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace ActionAtaDistance1.ViewModel
 {
-    public class MysteryBooksViewModel : ObservableObject
+    public class MysteryBooksViewModel : ObservableObject, IMysteryBooksViewModel
     {
         public List<MysteryBook> MysteryBooks { get; set; }
 
@@ -21,8 +21,8 @@ namespace ActionAtaDistance1.ViewModel
         //private int previousID;
 
         private MysteryBook selectedMysteryBook;
-        public MysteryBook SelectedMysteryBook 
-        { 
+        public MysteryBook SelectedMysteryBook
+        {
             get { return selectedMysteryBook; }
             set
             {
@@ -77,7 +77,7 @@ namespace ActionAtaDistance1.ViewModel
 
         private void ExecuteSaveCommand()
         {
-            if (! SelectedMysteryBook.PublishDate.HasValue)
+            if (!SelectedMysteryBook.PublishDate.HasValue)
             {
                 return;
             }

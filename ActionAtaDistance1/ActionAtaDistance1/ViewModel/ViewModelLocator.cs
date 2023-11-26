@@ -15,6 +15,7 @@
 using CommonServiceLocator;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.DependencyInjection;
+using System.Web.Services.Description;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -42,9 +43,18 @@ namespace ActionAtaDistance1.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            Ioc.Default.Register<MainViewModel>();
-            Ioc.Default.Register<AuthorsViewModel>();
-            Ioc.Default.Register<MysteryBooksViewModel>();
+            //Ioc.Default.Register<MainViewModel>();
+            //Ioc.Default.Register<AuthorsViewModel>();
+            //Ioc.Default.Register<MysteryBooksViewModel>();
+
+            // Trying to use the migration path as described here: https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/migratingfrommvvmlight#registering-your-dependencies
+            Ioc.Default.ConfigureServices(
+                new ServiceCollection()
+                .AddSingleton<IMainViewModel, MainViewModel>()
+                .AddSingleton<IAuthorsViewModel, AuthorsViewModel>()
+                .AddSingleton<IMysteryBooksViewModel, MysteryBooksViewModel>()
+                .BuildServiceProvider());
+
         }
 
         public MainViewModel Main

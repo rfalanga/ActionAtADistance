@@ -11,7 +11,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace ActionAtaDistance1.ViewModel
 {
-    public class AuthorsViewModel : ObservableObject
+    public class AuthorsViewModel : ObservableObject, IAuthorsViewModel
     {
         public List<Author> Authors { get; set; }
 
@@ -21,8 +21,8 @@ namespace ActionAtaDistance1.ViewModel
         private int previousID;
 
         private Author selectedAuthor;
-        public Author SelectedAuthor 
-        { 
+        public Author SelectedAuthor
+        {
             get { return selectedAuthor; }
             set
             {
@@ -36,8 +36,8 @@ namespace ActionAtaDistance1.ViewModel
         }
 
         private bool showDate;
-        public bool ShowDate 
-        { 
+        public bool ShowDate
+        {
             get { return showDate; }
             set
             {
@@ -50,8 +50,8 @@ namespace ActionAtaDistance1.ViewModel
         }
 
         private string errorTextBlock;
-        public String ErrorTextBlock 
-        { 
+        public String ErrorTextBlock
+        {
             get { return errorTextBlock; }
             set
             {
@@ -108,7 +108,7 @@ namespace ActionAtaDistance1.ViewModel
 
         private void ExecuteSaveCommand()
         {
-            if (! SelectedAuthor.DateOfBirth.HasValue)
+            if (!SelectedAuthor.DateOfBirth.HasValue)
             {
                 return;
             }
