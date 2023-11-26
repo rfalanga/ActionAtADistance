@@ -71,8 +71,8 @@ namespace ActionAtaDistance1.ViewModel
 
             //previousID = 0;
 
-            SaveCommand = new AsyncRelayCommand(ExecuteSaveCommand);
-            CancelCommand = new AsyncRelayCommand(ExecuteCancelCommand);
+            SaveCommand = new RelayCommand(ExecuteSaveCommand);
+            CancelCommand = new RelayCommand(ExecuteCancelCommand);
         }
 
         private void ExecuteSaveCommand()

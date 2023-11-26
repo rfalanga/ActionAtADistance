@@ -39,8 +39,8 @@ namespace ActionAtaDistance1.ViewModel
             ////    // Code runs "for real"
             ////}
 
-            ViewAuthorsCommand = new AsyncRelayCommand(ExecuteViewAuthorsCommand);
-            ViewMysteryBooksCommand = new AsyncRelayCommand(ExecuteViewMysteryBooksCommand);
+            ViewAuthorsCommand = new RelayCommand(ExecuteViewAuthorsCommand);
+            ViewMysteryBooksCommand = new RelayCommand(ExecuteViewMysteryBooksCommand);
         }
 
         private void ExecuteViewMysteryBooksCommand()

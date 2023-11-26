@@ -62,7 +62,8 @@ namespace ActionAtaDistance1.ViewModel
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                //return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return Ioc.Default.GetService<MainViewModel>();
             }
         }
 
@@ -70,7 +71,8 @@ namespace ActionAtaDistance1.ViewModel
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<AuthorsViewModel>();
+                //return ServiceLocator.Current.GetInstance<AuthorsViewModel>();
+                return Ioc.Default.GetService<AuthorsViewModel>();
             }
         }
 
@@ -78,7 +80,8 @@ namespace ActionAtaDistance1.ViewModel
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MysteryBooksViewModel>();
+                //return ServiceLocator.Current.GetInstance<MysteryBooksViewModel>();
+                return Ioc.Default.GetService<MysteryBooksViewModel>();
             }
         }
         
