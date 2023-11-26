@@ -15,7 +15,8 @@
 using CommonServiceLocator;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.DependencyInjection;
-using System.Web.Services.Description;
+using Microsoft.Extensions.DependencyInjection;
+//using System.Web.Services.Description;
 
 namespace ActionAtaDistance1.ViewModel
 {
