@@ -26,7 +26,7 @@ namespace ActionAtaDistance1.Model
                 .WithOne(a => a.MysteryGenre)
                 .HasForeignKey(a => a.MysteryGenreID);
 
-            modelBuilder.Seed();
+            // modelBuilder.Seed(); // I don't know if this is necessary
         }
     }
 }

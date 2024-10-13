@@ -3,6 +3,8 @@ using System.Windows.Input;
 using ActionAtaDistance1.Common;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.EntityFrameworkCore;
+using ActionAtaDistance1.Model;
 
 namespace ActionAtaDistance1.ViewModel
 {
@@ -41,6 +43,11 @@ namespace ActionAtaDistance1.ViewModel
 
             ViewAuthorsCommand = new RelayCommand(ExecuteViewAuthorsCommand);
             ViewMysteryBooksCommand = new RelayCommand(ExecuteViewMysteryBooksCommand);
+            var options = new DbContextOptionsBuilder<AuthorsModel>()
+                .UseSqlServer("data source=(local);initial catalog=Authors;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
+                .Options;
+            mainDbContext = new AuthorsModel(options);
+
         }
 
         private void ExecuteViewMysteryBooksCommand()
