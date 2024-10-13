@@ -26,28 +26,14 @@ namespace ActionAtaDistance1.ViewModel
         public ICommand ViewMysteryBooksCommand { get; private set; }
         internal MainDbContext mainDbContext { get; private set; }
 
-
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
-
             ViewAuthorsCommand = new RelayCommand(ExecuteViewAuthorsCommand);
             ViewMysteryBooksCommand = new RelayCommand(ExecuteViewMysteryBooksCommand);
             var options = new DbContextOptionsBuilder<AuthorsModel>()
                 .UseSqlServer("data source=(local);initial catalog=Authors;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
                 .Options;
             mainDbContext = new AuthorsModel(options);
-
         }
 
         private void ExecuteViewMysteryBooksCommand()
