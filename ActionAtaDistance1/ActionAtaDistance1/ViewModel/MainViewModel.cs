@@ -4,6 +4,7 @@ using ActionAtaDistance1.Common;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using ActionAtaDistance1.Model;
 
 namespace ActionAtaDistance1.ViewModel
